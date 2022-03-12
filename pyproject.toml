@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Website"
+name = "Personal Website"
 version = "0.1.0"
 description = "A personal website project"
 authors = ["Alex Grant <agrant@gmail.com>"]
@@ -11,10 +11,12 @@ keywords = ["website"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-click = "^8.0.4"
 
 [tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+website_py = "website_py.console:main"
