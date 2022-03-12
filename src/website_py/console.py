@@ -1,4 +1,4 @@
-import click_spinner
+import click
 
 from . import __version__
 
