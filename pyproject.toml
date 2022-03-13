@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "website-py"
 version = "0.1.0"
-description = "A personal website project"
+description = "Hypermodern Python Project"
 authors = ["Alex Grant <agrant@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -21,4 +21,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-website-py = "website_py.console:main"
+website_py = "website_py.console:main"
