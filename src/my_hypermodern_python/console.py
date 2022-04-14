@@ -11,7 +11,7 @@ error_test = "https://httpbin.org/status/404"
 @click.command()
 @click.version_option(version=__version__)
 def main():
-    """I was confused, this is a CLI tool to interact with an API."""
+    """I was confused, this is a CLI tool to interact with an API, not a personal website."""
     with requests.get(API_URL) as response:
         response.raise_for_status()
         data = response.json()
