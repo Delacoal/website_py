@@ -1,4 +1,4 @@
-# src/website-py/console.py
+
 import textwrap
 
 import click

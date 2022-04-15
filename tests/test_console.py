@@ -1,8 +1,8 @@
-# tests/test_console.py
+
 import click.testing
 import pytest
 
-from website_py import console
+from my_hypermodern_python import console
 
 @pytest.fixture
 def runner():
