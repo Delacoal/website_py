@@ -7,7 +7,9 @@ import requests
 from . import __version__
 
 API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
+
 error_test = "https://httpbin.org/status/404"
+
 @click.command()
 @click.version_option(version=__version__)
 def main():
