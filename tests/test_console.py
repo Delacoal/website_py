@@ -25,3 +25,11 @@ def test_main_prints_title(runner, mock_requests_get):
     """Test if console.main prints Title"""
     result = runner.invoke(console.main)
     assert "Lorem Ipsum" in result.output
+
+def test_main_invokes_requests_get(runner, mock_requests_get):
+    """mocks can be inspected to see if they were called, 
+    using the mock's called attribute. This provides you 
+    with a way to check that requests.get was invoked to 
+    send a request to the API:"""
+    runner.invoke(console.main)
+    assert mock_requests_get.called
