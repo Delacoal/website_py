@@ -20,3 +20,8 @@ def mock_requests_get(mocker):
 def test_main_succeeds(runner, mock_requests_get):
     result = runner.invoke(console.main)
     assert result.exit_code == 0
+
+def test_main_prints_title(runner, mock_requests_get):
+    """Test if console.main prints Title"""
+    result = runner.invoke(console.main)
+    assert "Lorem Ipsum" in result.output
