@@ -15,6 +15,12 @@ def mock_wikipedia_random_page(mocker):
     return mocker.patch("my_hypermodern_python.wikipedia.random_page")
 
 
+@pytest.mark.e2e
+def test_main_succeeds_in_production_env(runner):
+    result = runner.invoke(console.main)
+    assert result.exit_code == 0
+
+
 def test_main_succeeds(runner, mock_requests_get):
     result = runner.invoke(console.main)
     assert result.exit_code == 0
@@ -39,6 +45,7 @@ def test_main_uses_en_wikipedia_org(runner, mock_requests_get):
     runner.invoke(console.main)
     args, _ = mock_requests_get.call_args
     assert "en.wikipedia.org" in args[0]
+
 
 def test_main_uses_specified_language(runner, mock_wikipedia_random_page):
     runner.invoke(console.main, ["--language=pl"])
