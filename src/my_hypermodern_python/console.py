@@ -14,11 +14,13 @@ from . import __version__, wikipedia
     show_default=True,
 )
 @click.version_option(version=__version__)
-def main():
+def main(language):
     """The hypermodern Python project."""
-    data = wikipedia.random_page()
+    data = wikipedia.random_page(language=language)
+
     title = data["title"]
     extract = data["extract"]
+
     click.secho(title, fg="green")
     click.echo(textwrap.fill(extract))
 
