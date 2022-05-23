@@ -4,6 +4,7 @@ import click
 
 from . import __version__, wikipedia
 
+
 @click.command()
 @click.option(
     "--language",
@@ -23,4 +24,3 @@ def main(language):
 
     click.secho(title, fg="green")
     click.echo(textwrap.fill(extract))
-
