@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "my-hypermodern-python"
 version = "0.1.0"
-description = "My version of the hypermodern python project article"
+description = "CLI application using python tooling as per the Hypermodern Python article series."
 authors = ["Alex Grant <agrant@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/Delacoal/my-hypermodern-python"
 repository = "https://github.com/Delacoal/"
-keywords = ["website"]
+keywords = ["python, tooling"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
