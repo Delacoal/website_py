@@ -60,7 +60,7 @@ def safety(session):
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
-@nox.session(python="3.8")
+@nox.session(python=["3.8"])
 def mypy(session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
