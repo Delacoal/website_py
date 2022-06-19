@@ -30,3 +30,6 @@ isort:
 
 isort-fix:
 	poetry run isort .
+
+safety:
+	poetry export -f requirements.txt | poetry run safety check --stdin
