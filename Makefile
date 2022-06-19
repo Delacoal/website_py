@@ -9,7 +9,7 @@ update:
 local: install
 	poetry run pre-commit install
 
-lint: flake8 black isort cfn-lint newline-check
+lint: flake8 black isort cfn-lint
 
 lint-fix: black-fix isort-fix
 
