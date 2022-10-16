@@ -1,10 +1,9 @@
-from gettext import install
 import tempfile
+
 import nox
 
+nox.options.sessions = "lint", "safety", "mypy", "tests"
 locations = "src", "tests", "noxfile.py"
-
-nox.options.sessions = "lint", "safety", "tests", "mypy"
 
 
 def install_with_constraints(session, *args, **kwargs):
@@ -14,6 +13,7 @@ def install_with_constraints(session, *args, **kwargs):
             "export",
             "--dev",
             "--format=requirements.txt",
+            "--without-hashes",
             f"--output={requirements.name}",
             external=True,
         )

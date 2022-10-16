@@ -1,41 +1,37 @@
+
+
 [tool.poetry]
 name = "my-hypermodern-python"
 version = "0.1.0"
-description = "CLI application using python tooling as per the Hypermodern Python article series."
-authors = ["Alex Grant <agrant@gmail.com>"]
+description = "my hypermodern Python project"
+authors = ["Alexander Grant"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/Delacoal/my-hypermodern-python"
-repository = "https://github.com/Delacoal/"
-keywords = ["python, tooling"]
+repository = "https://github.com/Delacoal/my-hypermodern-python"
+keywords = ["hypermodern"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-requests = "^2.27.1"
-click = "^8.1.2"
-black = "^22.3.0"
-isort = "^5.10.1"
+click = "^8.0"
+requests = "^2.22.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.0.1"
-pytest-cov = "^3.0.0"
-coverage = "^6.3.2"
-pytest-mock = "^3.7.0"
-flake8 = "^4.0.1"
-black = "^22.3.0"
-flake8-bandit = "^3.0.0"
-flake8-black = "^0.3.3"
-flake8-bugbear = "^22.4.25"
+pytest = "^5.3.2"
+coverage = {extras = ["toml"], version = "^5.0.1"}
+pytest-cov = "^2.8.1"
+pytest-mock = "^2.0.0"
+flake8 = "^3.7.9"
+black = "^19.10b0"
+flake8-black = "^0.1.1"
 flake8-import-order = "^0.18.1"
-safety = "^1.10.3"
-mypy = "^0.961"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+flake8-bugbear = "^20.1.2"
+flake8-bandit = "^2.1.2"
+safety = "^1.8.5"
+mypy = "^0.761"
 
 [tool.poetry.scripts]
-my-hypermodern-python = "my_hypermodern_python.console:main"
+hypermodern-python = "my_hypermodern_python.console:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -47,3 +43,7 @@ source = ["my_hypermodern_python"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
