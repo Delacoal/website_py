@@ -20,7 +20,7 @@ def install_with_constraints(session, *args, **kwargs):
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
 
-@nox.session(python=["3.8"])
+@nox.session(python=["3.8", "3.7"])
 def tests(session):
     args = session.posargs or ["--cov", "-m", "not e2e"]
     session.run("poetry", "install", "--no-dev", external=True)
@@ -30,7 +30,7 @@ def tests(session):
     session.run("pytest", *args)
 
 
-@nox.session(python=["3.8"])
+@nox.session(python=["3.8", "3.7"])
 def lint(session):
     args = session.posargs or locations
     session.install("flake8", "flake8-black", "flake8-bugbear", "flake8-import-order")
@@ -60,7 +60,7 @@ def safety(session):
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
-@nox.session(python=["3.8"])
+@nox.session(python=["3.8", "3.7"])
 def mypy(session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
