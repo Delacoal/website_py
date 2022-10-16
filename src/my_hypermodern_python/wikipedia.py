@@ -1,12 +1,14 @@
+from typing import Any
+
 import click
 import requests
 
-API_URL = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
+API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
 
 error_test = "https://httpbin.org/status/404"
 
 
-def random_page(language="en"):
+def random_page(language: str = "en") -> Any:
     URL = API_URL.format(language=language)
 
     try:
