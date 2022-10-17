@@ -2,6 +2,8 @@ from dataclasses import dataclass
 
 import click
 import requests
+import desert
+import marshmallow
 
 
 API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
@@ -13,6 +15,9 @@ error_test = "https://httpbin.org/status/404"
 class Page:
     title: str
     extract: str
+
+
+schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 
 
 def random_page(language: str = "en") -> Page:
