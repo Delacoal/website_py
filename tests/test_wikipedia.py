@@ -1,5 +1,9 @@
+from unittest.mock import Mock
+
+import click
+import pytest
+
 from my_hypermodern_python import wikipedia
-from my_hypermodern_python.wikipedia import Page
 
 
 def test_random_page_uses_given_language(mock_requests_get):
@@ -10,4 +14,10 @@ def test_random_page_uses_given_language(mock_requests_get):
 
 def test_random_page_returns_page(mock_requests_get):
     page = wikipedia.random_page(language="en")
-    assert isinstance(Page, wikipedia.page)
+    assert isinstance(page, wikipedia.page)
+
+
+def test_random_page_handles_validation_errors(mock_requests_get: Mock) -> None:
+    mock_requests_get.return_value.__enter__.return_value.json.return_value = None
+    with pytest.raises(click.ClickException):
+        wikipedia.random_page()
