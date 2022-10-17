@@ -8,8 +8,6 @@ import marshmallow
 
 API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
 
-error_test = "https://httpbin.org/status/404"
-
 
 @dataclass
 class Page:
