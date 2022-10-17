@@ -33,6 +33,7 @@ safety = "^1.8.5"
 mypy = "^0.761"
 pytype = {version = "2020.1.8", python = "3.7"}
 bandit = "1.7.2"
+typeguard = "^2.13.3"
 
 [tool.poetry.scripts]
 hypermodern-python = "my_hypermodern_python.console:main"

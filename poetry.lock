@@ -617,6 +617,18 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "typeguard"
+version = "2.13.3"
+description = "Run-time type checker for Python"
+category = "dev"
+optional = false
+python-versions = ">=3.5.3"
+
+[package.extras]
+doc = ["sphinx-rtd-theme", "sphinx-autodoc-typehints (>=1.2.0)"]
+test = ["pytest", "typing-extensions", "mypy"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -672,7 +684,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "730bd6781166f8f85fc68e7e6c589bed66b4dd061c651e4771aebc7614a86640"
+content-hash = "552cc82fd90db47bceeff949d709fe655d3ce339df14f5394ccfbf80ca8c5606"
 
 [metadata.files]
 atomicwrites = []
@@ -814,6 +826,7 @@ tomli = [
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 typed-ast = []
+typeguard = []
 typing-extensions = []
 typing-inspect = []
 urllib3 = []
