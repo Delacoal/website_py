@@ -26,7 +26,8 @@ def random_page(language: str = "en") -> Page:
     try:
         with requests.get(URL) as response:
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            return schema.load(data)
     except requests.RequestException as error:
         message = str(error)
         raise click.ClickException(message) from error
