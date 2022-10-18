@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 
 import click
-import requests
 import desert
 import marshmallow
-
+import requests
 
 API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
 

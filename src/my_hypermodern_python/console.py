@@ -4,8 +4,6 @@ import click
 
 from . import __version__, wikipedia
 
-from src.my_hypermodern_python.wikipedia import Page
-
 
 @click.command()
 @click.option(
