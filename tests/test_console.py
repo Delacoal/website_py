@@ -1,27 +1,30 @@
+from unittest.mock import Mock
+
 import click.testing
 import pytest
 import requests
+from click.testing import CliRunner
 
 from my_hypermodern_python import console
 
 
 @pytest.fixture
-def runner():
+def runner() -> CliRunner:
     return click.testing.CliRunner()
 
 
 @pytest.fixture
-def mock_wikipedia_random_page(mocker):
+def mock_wikipedia_random_page(mocker: MockFixture):
     return mocker.patch("my_hypermodern_python.wikipedia.random_page")
 
 
 @pytest.mark.e2e
-def test_main_succeeds_in_production_env(runner):
+def test_main_succeeds_in_production_env(runner: CliRunner):
     result = runner.invoke(console.main)
     assert result.exit_code == 0
 
 
-def test_main_succeeds(runner, mock_requests_get):
+def test_main_succeeds(runner: CliRunner, mock_requests_get: Mock):
     result = runner.invoke(console.main)
     assert result.exit_code == 0
 
