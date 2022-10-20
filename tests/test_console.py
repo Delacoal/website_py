@@ -4,6 +4,7 @@ import click.testing
 import pytest
 import requests
 from click.testing import CliRunner
+from pytest_mock import MockFixture
 
 from my_hypermodern_python import console
 
