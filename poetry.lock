@@ -21,6 +21,21 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
+name = "aws-sam-translator"
+version = "1.53.0"
+description = "AWS SAM Translator is a library that transform SAM templates into AWS CloudFormation templates"
+category = "dev"
+optional = false
+python-versions = ">=3.7, <=4.0, !=4.0"
+
+[package.dependencies]
+boto3 = ">=1.19.5,<2.0.0"
+jsonschema = ">=3.2,<4.0"
+
+[package.extras]
+dev = ["coverage (>=5.3,<6.0)", "flake8 (>=3.8.4,<3.9.0)", "tox (>=3.24,<4.0)", "pytest-cov (>=2.10.1,<2.11.0)", "pytest-xdist (>=2.5,<3.0)", "pytest-env (>=0.6.2,<0.7.0)", "pylint (>=2.9.0,<2.10.0)", "pyyaml (>=5.4,<6.0)", "pytest (>=6.2.5,<6.3.0)", "parameterized (>=0.7.4,<0.8.0)", "click (>=7.1,<8.0)", "dateparser (>=0.7,<1.0)", "boto3 (>=1.23,<2)", "tenacity (>=7.0.0,<7.1.0)", "requests (>=2.24.0,<2.25.0)", "docopt (>=0.6.2,<0.7.0)", "black (==20.8b1)", "mypy (==0.971)", "boto3-stubs[appconfig,serverlessrepo] (>=1.19.5,<2.0.0)", "types-PyYAML (>=5.4,<6.0)", "types-jsonschema (>=3.2,<4.0)"]
+
+[[package]]
 name = "bandit"
 version = "1.7.2"
 description = "Security oriented static analyser for python code."
@@ -63,12 +78,62 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
+name = "boto3"
+version = "1.24.94"
+description = "The AWS SDK for Python"
+category = "dev"
+optional = false
+python-versions = ">= 3.7"
+
+[package.dependencies]
+botocore = ">=1.27.94,<1.28.0"
+jmespath = ">=0.7.1,<2.0.0"
+s3transfer = ">=0.6.0,<0.7.0"
+
+[package.extras]
+crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
+
+[[package]]
+name = "botocore"
+version = "1.27.94"
+description = "Low-level, data-driven core of boto 3."
+category = "dev"
+optional = false
+python-versions = ">= 3.7"
+
+[package.dependencies]
+jmespath = ">=0.7.1,<2.0.0"
+python-dateutil = ">=2.1,<3.0.0"
+urllib3 = ">=1.25.4,<1.27"
+
+[package.extras]
+crt = ["awscrt (==0.14.0)"]
+
+[[package]]
 name = "certifi"
 version = "2022.9.24"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[[package]]
+name = "cfn-lint"
+version = "0.68.0"
+description = "Checks CloudFormation templates for practices and behaviour that could potentially be improved"
+category = "dev"
+optional = false
+python-versions = ">=3.7, <=4.0, !=4.0"
+
+[package.dependencies]
+aws-sam-translator = ">=1.53.0"
+jschema-to-python = ">=1.2.3,<1.3.0"
+jsonpatch = "*"
+jsonschema = ">=3.0,<5"
+junit-xml = ">=1.9,<2.0"
+networkx = ">=2.4,<3.0"
+pyyaml = ">5.4"
+sarif-om = ">=1.0.4,<1.1.0"
 
 [[package]]
 name = "charset-normalizer"
@@ -226,17 +291,6 @@ flake8 = ">=3.0.0"
 dev = ["coverage", "black", "hypothesis", "hypothesmith"]
 
 [[package]]
-name = "flake8-import-order"
-version = "0.18.1"
-description = "Flake8 and pylama plugin that checks the ordering of import statements."
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-pycodestyle = "*"
-
-[[package]]
 name = "flake8-polyfill"
 version = "1.0.2"
 description = "Polyfill package for Flake8 plugins"
@@ -319,6 +373,91 @@ pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
 requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
 plugins = ["setuptools"]
+
+[[package]]
+name = "jmespath"
+version = "1.0.1"
+description = "JSON Matching Expressions"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "jschema-to-python"
+version = "1.2.3"
+description = "Generate source code for Python classes from a JSON schema."
+category = "dev"
+optional = false
+python-versions = ">= 2.7"
+
+[package.dependencies]
+attrs = "*"
+jsonpickle = "*"
+pbr = "*"
+
+[[package]]
+name = "jsonpatch"
+version = "1.32"
+description = "Apply JSON-Patches (RFC 6902)"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[package.dependencies]
+jsonpointer = ">=1.9"
+
+[[package]]
+name = "jsonpickle"
+version = "2.2.0"
+description = "Python library for serializing any arbitrary object graph into JSON"
+category = "dev"
+optional = false
+python-versions = ">=2.7"
+
+[package.dependencies]
+importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
+
+[package.extras]
+testing = ["pytest-flake8 (>=1.1.1)", "jsonlib", "enum34", "pytest-flake8 (<1.1.0)", "sqlalchemy", "scikit-learn", "pymongo", "pandas", "numpy", "feedparser", "ecdsa", "pytest-cov", "pytest-black-multipy", "pytest-checkdocs (>=1.2.3)", "pytest (>=3.5,!=3.7.3)"]
+"testing.libs" = ["yajl", "ujson", "simplejson"]
+docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=3.2)", "sphinx"]
+
+[[package]]
+name = "jsonpointer"
+version = "2.3"
+description = "Identify specific nodes in a JSON document (RFC 6901)"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "jsonschema"
+version = "3.2.0"
+description = "An implementation of JSON Schema validation for Python"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+attrs = ">=17.4.0"
+importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
+pyrsistent = ">=0.14.0"
+six = ">=1.11.0"
+
+[package.extras]
+format = ["idna", "jsonpointer (>1.13)", "rfc3987", "strict-rfc3339", "webcolors"]
+format_nongpl = ["idna", "jsonpointer (>1.13)", "webcolors", "rfc3986-validator (>0.1.0)", "rfc3339-validator"]
+
+[[package]]
+name = "junit-xml"
+version = "1.9"
+description = "Creates JUnit XML test result documents that can be read by tools such as Jenkins"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
 
 [[package]]
 name = "marshmallow"
@@ -492,6 +631,14 @@ python-versions = ">=3.6.8"
 diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
+name = "pyrsistent"
+version = "0.18.1"
+description = "Persistent/Functional/Immutable data structures"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "pytest"
 version = "5.4.3"
 description = "pytest: simple powerful testing with Python"
@@ -545,6 +692,17 @@ pytest = ">=2.7"
 dev = ["tox", "pre-commit"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "dev"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "pytype"
 version = "2020.1.8"
 description = "Python type inferencer"
@@ -587,6 +745,20 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "s3transfer"
+version = "0.6.0"
+description = "An Amazon S3 Transfer Manager"
+category = "dev"
+optional = false
+python-versions = ">= 3.7"
+
+[package.dependencies]
+botocore = ">=1.12.36,<2.0a.0"
+
+[package.extras]
+crt = ["botocore[crt] (>=1.20.29,<2.0a.0)"]
+
+[[package]]
 name = "safety"
 version = "1.10.3"
 description = "Checks installed dependencies for known vulnerabilities."
@@ -599,6 +771,18 @@ Click = ">=6.0"
 dparse = ">=0.5.1"
 packaging = "*"
 requests = "*"
+
+[[package]]
+name = "sarif-om"
+version = "1.0.4"
+description = "Classes implementing the SARIF 2.1.0 object model."
+category = "dev"
+optional = false
+python-versions = ">= 2.7"
+
+[package.dependencies]
+attrs = "*"
+pbr = "*"
 
 [[package]]
 name = "six"
@@ -728,14 +912,18 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d6f6257230ccbbe90db3fbdab46cfaa8035403cd2078542453fa12408ca58979"
+content-hash = "d178fb6b51cf5203a22dd7e840ec10a178c194fe980fbe0ce8fb0987b360c47e"
 
 [metadata.files]
 atomicwrites = []
 attrs = []
+aws-sam-translator = []
 bandit = []
 black = []
+boto3 = []
+botocore = []
 certifi = []
+cfn-lint = []
 charset-normalizer = []
 click = [
     {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
@@ -754,10 +942,6 @@ flake8-black = [
     {file = "flake8_black-0.3.3-py3-none-any.whl", hash = "sha256:7d667d0059fd1aa468de1669d77cc934b7f1feeac258d57bdae69a8e73c4cd90"},
 ]
 flake8-bugbear = []
-flake8-import-order = [
-    {file = "flake8-import-order-0.18.1.tar.gz", hash = "sha256:a28dc39545ea4606c1ac3c24e9d05c849c6e5444a50fb7e9cdd430fc94de6e92"},
-    {file = "flake8_import_order-0.18.1-py2.py3-none-any.whl", hash = "sha256:90a80e46886259b9c396b578d75c749801a41ee969a235e163cfe1be7afd2543"},
-]
 flake8-polyfill = [
     {file = "flake8-polyfill-1.0.2.tar.gz", hash = "sha256:e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda"},
     {file = "flake8_polyfill-1.0.2-py2.py3-none-any.whl", hash = "sha256:12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9"},
@@ -773,6 +957,24 @@ importlib-metadata = []
 isort = [
     {file = "isort-5.10.1-py3-none-any.whl", hash = "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7"},
     {file = "isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
+]
+jmespath = []
+jschema-to-python = []
+jsonpatch = [
+    {file = "jsonpatch-1.32-py2.py3-none-any.whl", hash = "sha256:26ac385719ac9f54df8a2f0827bb8253aa3ea8ab7b3368457bcdb8c14595a397"},
+    {file = "jsonpatch-1.32.tar.gz", hash = "sha256:b6ddfe6c3db30d81a96aaeceb6baf916094ffa23d7dd5fa2c13e13f8b6e600c2"},
+]
+jsonpickle = []
+jsonpointer = [
+    {file = "jsonpointer-2.3-py2.py3-none-any.whl", hash = "sha256:51801e558539b4e9cd268638c078c6c5746c9ac96bc38152d443400e4f3793e9"},
+    {file = "jsonpointer-2.3.tar.gz", hash = "sha256:97cba51526c829282218feb99dab1b1e6bdf8efd1c43dc9d57be093c0d69c99a"},
+]
+jsonschema = [
+    {file = "jsonschema-3.2.0-py2.py3-none-any.whl", hash = "sha256:4e5b3cf8216f577bee9ce139cbe72eca3ea4f292ec60928ff24758ce626cd163"},
+    {file = "jsonschema-3.2.0.tar.gz", hash = "sha256:c8a85b28d377cc7737e46e2d9f2b4f44ee3c0e1deac6bf46ddefc7187d30797a"},
+]
+junit-xml = [
+    {file = "junit_xml-1.9-py2.py3-none-any.whl", hash = "sha256:ec5ca1a55aefdd76d28fcc0b135251d156c7106fa979686a4b48d62b761b4732"},
 ]
 marshmallow = []
 mccabe = [
@@ -805,12 +1007,39 @@ py = [
 pycodestyle = []
 pyflakes = []
 pyparsing = []
+pyrsistent = [
+    {file = "pyrsistent-0.18.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:df46c854f490f81210870e509818b729db4488e1f30f2a1ce1698b2295a878d1"},
+    {file = "pyrsistent-0.18.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5d45866ececf4a5fff8742c25722da6d4c9e180daa7b405dc0a2a2790d668c26"},
+    {file = "pyrsistent-0.18.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:4ed6784ceac462a7d6fcb7e9b663e93b9a6fb373b7f43594f9ff68875788e01e"},
+    {file = "pyrsistent-0.18.1-cp310-cp310-win32.whl", hash = "sha256:e4f3149fd5eb9b285d6bfb54d2e5173f6a116fe19172686797c056672689daf6"},
+    {file = "pyrsistent-0.18.1-cp310-cp310-win_amd64.whl", hash = "sha256:636ce2dc235046ccd3d8c56a7ad54e99d5c1cd0ef07d9ae847306c91d11b5fec"},
+    {file = "pyrsistent-0.18.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:e92a52c166426efbe0d1ec1332ee9119b6d32fc1f0bbfd55d5c1088070e7fc1b"},
+    {file = "pyrsistent-0.18.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d7a096646eab884bf8bed965bad63ea327e0d0c38989fc83c5ea7b8a87037bfc"},
+    {file = "pyrsistent-0.18.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:cdfd2c361b8a8e5d9499b9082b501c452ade8bbf42aef97ea04854f4a3f43b22"},
+    {file = "pyrsistent-0.18.1-cp37-cp37m-win32.whl", hash = "sha256:7ec335fc998faa4febe75cc5268a9eac0478b3f681602c1f27befaf2a1abe1d8"},
+    {file = "pyrsistent-0.18.1-cp37-cp37m-win_amd64.whl", hash = "sha256:6455fc599df93d1f60e1c5c4fe471499f08d190d57eca040c0ea182301321286"},
+    {file = "pyrsistent-0.18.1-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:fd8da6d0124efa2f67d86fa70c851022f87c98e205f0594e1fae044e7119a5a6"},
+    {file = "pyrsistent-0.18.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7bfe2388663fd18bd8ce7db2c91c7400bf3e1a9e8bd7d63bf7e77d39051b85ec"},
+    {file = "pyrsistent-0.18.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:0e3e1fcc45199df76053026a51cc59ab2ea3fc7c094c6627e93b7b44cdae2c8c"},
+    {file = "pyrsistent-0.18.1-cp38-cp38-win32.whl", hash = "sha256:b568f35ad53a7b07ed9b1b2bae09eb15cdd671a5ba5d2c66caee40dbf91c68ca"},
+    {file = "pyrsistent-0.18.1-cp38-cp38-win_amd64.whl", hash = "sha256:d1b96547410f76078eaf66d282ddca2e4baae8964364abb4f4dcdde855cd123a"},
+    {file = "pyrsistent-0.18.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:f87cc2863ef33c709e237d4b5f4502a62a00fab450c9e020892e8e2ede5847f5"},
+    {file = "pyrsistent-0.18.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6bc66318fb7ee012071b2792024564973ecc80e9522842eb4e17743604b5e045"},
+    {file = "pyrsistent-0.18.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:914474c9f1d93080338ace89cb2acee74f4f666fb0424896fcfb8d86058bf17c"},
+    {file = "pyrsistent-0.18.1-cp39-cp39-win32.whl", hash = "sha256:1b34eedd6812bf4d33814fca1b66005805d3640ce53140ab8bbb1e2651b0d9bc"},
+    {file = "pyrsistent-0.18.1-cp39-cp39-win_amd64.whl", hash = "sha256:e24a828f57e0c337c8d8bb9f6b12f09dfdf0273da25fda9e314f0b684b415a07"},
+    {file = "pyrsistent-0.18.1.tar.gz", hash = "sha256:d4d61f8b993a7255ba714df3aca52700f8125289f84f704cf80916517c46eb96"},
+]
 pytest = []
 pytest-cov = [
     {file = "pytest-cov-2.12.1.tar.gz", hash = "sha256:261ceeb8c227b726249b376b8526b600f38667ee314f910353fa318caa01f4d7"},
     {file = "pytest_cov-2.12.1-py2.py3-none-any.whl", hash = "sha256:261bb9e47e65bd099c89c3edf92972865210c36813f80ede5277dceb77a4a62a"},
 ]
 pytest-mock = []
+python-dateutil = [
+    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
+    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
+]
 pytype = []
 pyyaml = [
     {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
@@ -848,10 +1077,12 @@ pyyaml = [
     {file = "PyYAML-6.0.tar.gz", hash = "sha256:68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"},
 ]
 requests = []
+s3transfer = []
 safety = [
     {file = "safety-1.10.3-py2.py3-none-any.whl", hash = "sha256:5f802ad5df5614f9622d8d71fedec2757099705c2356f862847c58c6dfe13e84"},
     {file = "safety-1.10.3.tar.gz", hash = "sha256:30e394d02a20ac49b7f65292d19d38fa927a8f9582cdfd3ad1adbbc66c641ad5"},
 ]
+sarif-om = []
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
