@@ -39,6 +39,6 @@ The Hypermodern Python Project
 
        Display the version and exit.
 
-    .. option:: --help
+    .. option:: --helpp
 
        Display a short usage message and exit.
