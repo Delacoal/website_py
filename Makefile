@@ -13,8 +13,8 @@ lint: flake8 black isort cfn-lint
 
 lint-fix: black-fix isort-fix
 
-cfn-lint:
-	poetry run cfn-lint
+# cfn-lint:
+# 	poetry run cfn-lint
 
 flake8:
 	poetry run flake8
