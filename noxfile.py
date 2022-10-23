@@ -8,7 +8,7 @@ from nox.sessions import Session
 package = "my_hypermodern_python"
 
 nox.options.sessions = ("lint", "safety", "mypy", "tests", "pytype")
-locations = "src", "tests", "noxfile.py"
+locations = "src", "tests", "noxfile.py", "docs/conf.py"
 
 
 def install_with_constraints(session: Session, *args: str, **kwargs: Any):
@@ -32,6 +32,13 @@ def black(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "black")
     session.run("black", *args)
+
+
+@nox.session(python="3.8")
+def docs(session: Session) -> None:
+    """Build the documentation."""
+    install_with_constraints(session, "sphinx")
+    session.run("sphinx-build", "docs", "docs/_build")
 
 
 @nox.session(python=["3.8", "3.7"])
@@ -69,13 +76,6 @@ def safety(session: Session) -> None:
         session.run(
             "safety", "check", f"--file={requirements.name}", "--full-report"
         )
-
-
-@nox.session(python="3.8")
-def docs(session: Session) -> None:
-    """Build the documentation."""
-    install_with_constraints(session, "sphinx")
-    session.run("sphinx-build", "docs", "docs/_build")
 
 
 @nox.session(python=["3.8", "3.7"])
