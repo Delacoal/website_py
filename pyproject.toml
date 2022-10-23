@@ -54,6 +54,19 @@ source = ["my_hypermodern_python"]
 show_missing = true
 fail_under = 100
 
+[tool.black]
+line-length = 79
+include = '\.py$'
+exclude = '''
+/(
+    \.git
+  | \.aws-sam
+  | \.history
+  | \.venv
+  | \.nox
+)/
+'''
+
 [tool.isort]
 profile = "black"
 line_length = 79

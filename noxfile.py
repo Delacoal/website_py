@@ -52,6 +52,7 @@ def lint(session: Session) -> None:
         "flake8-bandit",
         "flake8-black",
         "flake8-bugbear",
+        "flake8-docstrings",
         "flake8-import-order",
     )
     session.run("flake8", *args)
@@ -77,7 +78,9 @@ def safety(session: Session) -> None:
             external=True,
         )
         install_with_constraints(session, "safety")
-        session.run("safety", "check", f"--file={requirements.name}", "--full-report")
+        session.run(
+            "safety", "check", f"--file={requirements.name}", "--full-report"
+        )
 
 
 @nox.session(python=["3.8", "3.7"])
