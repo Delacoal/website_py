@@ -38,6 +38,7 @@ importlib-metadata = "4.13.0"
 black = "^22.10.0"
 flake8 = "3.7.9"
 cfn-lint = "^0.68.0"
+flake8-docstrings = "^1.6.0"
 
 [tool.poetry.scripts]
 hypermodern-python = "my_hypermodern_python.console:main"
