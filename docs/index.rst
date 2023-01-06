@@ -1,44 +1,50 @@
-The Hypermodern Python Project
+My Hypermodern Python Project
     ==============================
 
-    My example project for the
-    `Hypermodern Python <https://medium.com/@cjolowicz/hypermodern-python-d44485d9d769>`_
-    article series.
-    The command-line interface prints random facts to your console,
-    using the `Wikipedia API <https://en.wikipedia.org/api/rest_v1/#/>`_.
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   license
+   
+My example project for the
+`Hypermodern Python <https://medium.com/@cjolowicz/hypermodern-python-d44485d9d769>`_
+article series.
+The command-line interface prints random facts to your console,
+using the `Wikipedia API <https://en.wikipedia.org/api/rest_v1/#/>`_.
 
 
-    Installation
-    ------------
+Installation
+------------
 
-    To install My Hypermodern Python project,
-    run this command in your terminal:
+To install My Hypermodern Python project,
+run this command in your terminal:
 
-    .. code-block:: console
+.. code-block:: console
 
-       $ pip install my-hypermodern-python
+    $ pip install my-hypermodern-python
 
 
-    Usage
-    -----
+Usage
+-----
 
-    Hypermodern Python's usage looks like:
+Hypermodern Python's usage looks like:
 
-    .. code-block:: console
+.. code-block:: console
 
-       $ hypermodern-python [OPTIONS]
+    $ hypermodern-python [OPTIONS]
 
-    .. option:: -l <language>, --language <language>
+.. option:: -l <language>, --language <language>
 
-       The Wikipedia language edition,
-       as identified by its subdomain on
-       `wikipedia.org <https://www.wikipedia.org/>`_.
-       By default, the English Wikipedia is selected.
+    The Wikipedia language edition,
+    as identified by its subdomain on
+    `wikipedia.org <https://www.wikipedia.org/>`_.
+    By default, the English Wikipedia is selected.
 
-    .. option:: --version
+.. option:: --version
 
-       Display the version and exit.
+    Display the version and exit.
 
-    .. option:: --help
+.. option:: --help
 
-       Display a short usage message and exit.
+    Display a short usage message and exit.

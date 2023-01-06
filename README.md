@@ -1,3 +1,3 @@
 # my-hypermodern-python
 
-This is the repo resulting from following the hypermodern python article series
+A CLI tool to call the Wikipedia API and return a random article.
